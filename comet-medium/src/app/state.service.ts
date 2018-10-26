@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 export class StateService {
   private token;
   private data;
+  public post;
   constructor(public router: Router,
     public httpClient: HttpClient) {
     const obj = JSON.parse(localStorage.getItem("laData"));
@@ -23,8 +24,15 @@ export class StateService {
     localStorage.setItem("laData", JSON.stringify(data));
 
   }
+  setPost(post) {
+    this.post = post;
+
+  }
   getToken(): string {
     return this.token;
+  }
+  getPost() {
+    return this.post;
   }
   logout() {
     localStorage.clear();
